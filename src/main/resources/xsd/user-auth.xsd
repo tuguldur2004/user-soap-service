@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://userauth.soap.service/"
+            xmlns:tns="http://userauth.soap.service/"
+            elementFormDefault="qualified">
+
+    <xsd:element name="RegisterUserRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="username" type="xsd:string"/>
+                <xsd:element name="password" type="xsd:string"/>
+                <xsd:element name="email" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="RegisterUserResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="success" type="xsd:boolean"/>
+                <xsd:element name="message" type="xsd:string"/>
+                <xsd:element name="userId" type="xsd:int"/>
+                <xsd:element name="role" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="LoginUserRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="username" type="xsd:string"/>
+                <xsd:element name="password" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="LoginUserResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="success" type="xsd:boolean"/>
+                <xsd:element name="message" type="xsd:string"/>
+                <xsd:element name="token" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="ValidateTokenRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="token" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="ValidateTokenResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="valid" type="xsd:boolean"/>
+                <xsd:element name="userId" type="xsd:int"/>
+                <xsd:element name="username" type="xsd:string"/>
+                <xsd:element name="role" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="AuthorizeRoleRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="token" type="xsd:string"/>
+                <xsd:element name="requiredRole" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="AuthorizeRoleResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="allowed" type="xsd:boolean"/>
+                <xsd:element name="username" type="xsd:string"/>
+                <xsd:element name="role" type="xsd:string"/>
+                <xsd:element name="message" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>
