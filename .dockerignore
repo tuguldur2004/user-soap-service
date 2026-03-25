@@ -1,0 +1,11 @@
+target/
+.git/
+.gitignore
+.settings/
+.classpath
+.project
+.factorypath
+README.md
+*.log
+.env
+.env.*
