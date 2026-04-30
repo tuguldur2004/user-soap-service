@@ -55,3 +55,13 @@ mvn spring-boot:run
 - `AUTH_DB_USER`
 - `AUTH_DB_PASSWORD` (required)
 - `APP_JWT_SECRET`
+
+## Deploy to DigitalOcean Droplets
+
+For the 3-droplet topology, run the SOAP service on the same droplet as the REST service, but expose it on a different host port:
+
+- SOAP service host port: `8082`
+- REST service host port: `8081`
+
+If the REST service runs in the same Docker Compose network, use `SOAP_SERVICE_URL=http://soap-service:8080/ws`.
+If the REST service reaches the SOAP service via the droplet network, use `SOAP_SERVICE_URL=http://<rest-soap-private-ip>:8082/ws`.
